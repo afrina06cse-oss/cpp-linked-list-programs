@@ -42,6 +42,7 @@ void removeCoach(Node*& head, int coach) {
     }
 
     Node* temp = head;
+
     while (temp->next != NULL && temp->next->coach != coach)
         temp = temp->next;
 
@@ -56,30 +57,41 @@ void display(Node* head) {
     Node* temp = head;
 
     while (temp != NULL) {
-        cout << temp->coach << " ";
+        cout << temp->coach;
+
+        if (temp->next != NULL)
+            cout << " -> ";
+
         temp = temp->next;
     }
+
     cout << endl;
 }
 
 int main() {
     Node* head = NULL;
 
-  
     addEnd(head, 1);
     addEnd(head, 2);
     addEnd(head, 3);
     addEnd(head, 4);
 
-    
+    cout << "Before:" << endl;
+    display(head);
+
     addBeginning(head, 0);
+
+    cout << "\nAdd at beginning (0):" << endl;
+    display(head);
 
     addEnd(head, 5);
 
-  
+    cout << "\nAdd at end (5):" << endl;
+    display(head);
+
     removeCoach(head, 3);
 
-    
+    cout << "\nRemove coach 3:" << endl;
     display(head);
 
     return 0;
